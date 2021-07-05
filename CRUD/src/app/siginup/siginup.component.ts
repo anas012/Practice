@@ -1,41 +1,70 @@
-import { formatCurrency } from '@angular/common';
-import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { usermodel } from '../shared/User.model';
+import { AuthenticationService } from '../authentication.service';
+import { Iusermodel, userRegister } from '../shared/User.model';
+import { map } from 'rxjs/operators';
+import { LOCATION_INITIALIZED } from '@angular/common';
 
 @Component({
   selector: 'app-siginup',
   templateUrl: './siginup.component.html',
   styleUrls: ['./siginup.component.css']
 })
-export class SiginupComponent implements OnInit {
-  genders = ['male','female'];
 
-user !:usermodel;
-  constructor() { }
+export class SiginupComponent implements OnInit {
+  
+  genders = ['male','female'];
+  submitted!:string;
+  issubmit=false;
+  message!:string;
+  resp!:userRegister;
+constructor(private authservices:AuthenticationService){}
 
   ngOnInit(): void {
-  }
+      }
   onsubmit(form:NgForm)
   {  
+    this.issubmit=false;
     if (!form.value)
     {
     return;
     }
-    
     else {
-      console.log (this.userdata(form));
+      console.log(this.userdata(form));
+      this.authservices.SiginupUser(this.userdata(form)).subscribe(
+        res=>
+        {
+          
+          localStorage.setItem('token',res.token);
+          localStorage.setItem('userid',res.user_id);
+          console.log(res.user_id);
+          console.log(res.token);
+        },
+        error=>
+        {
+          console.log(error);
+        }
+      );              
     }
+  
   }
   userdata(form:NgForm)
   {
-    this.user.email=form.value.email;
-    this.user.name=form.value.name;
-    this.user.password=form.value.password;
-    this.user.dob=form.value.dob,
-    this.user.age=form.value.age,
-    this.user.designation=form.value.designation;
-    this.user.isactive=form.value.isactive;
-  }
+    const user:Iusermodel={
+    
+   FirstName:form.value.FirstName,
+   LastName:form.value.LastName,
+   Username:form.value.Username,
+   Password:form.value.Password,
+   PhoneNumber:form.value.PhoneNumber,
+   Address:form.value.Address,    
+    }
+    return user;
+  
+}
+show()
+{
+this.submitted="Form submiited Succesffully";
+}
+
 }

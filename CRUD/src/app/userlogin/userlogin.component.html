@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+        <form  (ngSubmit)="onlogin(f)" #f="ngForm">
+            <div class="form-group">
+                <label for="Username">Email</label>
+                <input
+                  type="text"
+                  class="form-control m-1 number"
+                  id="Username"
+                  ngModel name="Username"
+                  placeholder="Username"
+                  #Username="ngModel"
+                  name="Username"
+                  required
+                />
+              </div> 
+              <span class="help-block" *ngIf="!Username.valid && Username.touched" >Please email</span>   
+
+              <div class="form-group">
+                <label for="Password">Password</label>
+                <input
+                  type="password"
+                  class="form-control m-1 number"
+                  id="Password"
+                  ngModel name="Password"
+                  placeholder="Password"
+                  #Password="ngModel"
+                  name="Password"
+                  required
+                />
+              </div> 
+              <span class="help-block" *ngIf="!Password.valid && Password.touched" >Please enter a password</span>   
+          </form>
+    </div>
+</div>

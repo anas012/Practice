@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Iusermodel, userRegister } from './shared/User.model';
 import {HttpClient} from '@angular/common/http'
 @Injectable({
   providedIn: 'root'
@@ -6,9 +7,9 @@ import {HttpClient} from '@angular/common/http'
 export class AuthenticationService {
 
   constructor( private htppdata:HttpClient) { }
-siginup(email:string,username:string,password:string,dob:Date,designg:string,Age:number,gender:string,isactive:boolean)
+SiginupUser(user:Iusermodel)
 {
-
+return this.htppdata.post<userRegister>("http://192.168.18.118:3000/login/signup",user);
 }
 }
 

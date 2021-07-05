@@ -1,13 +1,15 @@
-export interface usermodel
+export interface Iusermodel 
+{       
+       FirstName:string;
+        LastName:string;
+        Username:string;
+        Password:string;
+         PhoneNumber:string;
+         Address:string;
+};
+ export interface userRegister
 {
-      name:string;
-        email:string;
-        password:string;
-        dob:Date;
-        age:number;
-        gender:string;
-        designation:string;
-        isactive: boolean;
+      token:string;
+      user_id:string;
+};
 
-        
-}
