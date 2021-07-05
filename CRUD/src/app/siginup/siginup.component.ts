@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthenticationService } from '../authentication.service';
 import { Iusermodel, userRegister } from '../shared/User.model';
-import { map } from 'rxjs/operators';
-import { LOCATION_INITIALIZED } from '@angular/common';
 
 @Component({
   selector: 'app-siginup',
@@ -33,12 +31,11 @@ constructor(private authservices:AuthenticationService){}
       console.log(this.userdata(form));
       this.authservices.SiginupUser(this.userdata(form)).subscribe(
         res=>
-        {
-          
+        {         
           localStorage.setItem('token',res.token);
-          localStorage.setItem('userid',res.user_id);
-          console.log(res.user_id);
-          console.log(res.token);
+          localStorage.setItem('userid',res.UserID);
+          this.message=res.msg;
+          
         },
         error=>
         {

@@ -10,6 +10,22 @@ export interface Iusermodel
  export interface userRegister
 {
       token:string;
-      user_id:string;
+      UserID:string;
+      msg:string;
 };
+
+export interface Userlogin
+{
+        Username:string;
+       Password:string;
+};
+
+export interface userLoggedin
+{
+  token:string;
+  UserID:string;
+  msg:string;
+};
+
+
 
