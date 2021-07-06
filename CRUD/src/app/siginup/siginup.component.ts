@@ -10,37 +10,40 @@ import { Iusermodel, userRegister } from '../shared/User.model';
 })
 
 export class SiginupComponent implements OnInit {
-  
-  genders = ['male','female'];
-  submitted!:string;
-  issubmit=false;
   message!:string;
-  resp!:userRegister;
+  alert=false;
+  alert2=false;
+  IsActive=true;
+  IsDelete=false;
+  msg!:string;
 constructor(private authservices:AuthenticationService){}
 
   ngOnInit(): void {
       }
   onsubmit(form:NgForm)
   {  
-    this.issubmit=false;
-    if (!form.value)
+    if (!form.valid)
     {
     return;
     }
     else {
-      console.log(this.userdata(form));
       this.authservices.SiginupUser(this.userdata(form)).subscribe(
         res=>
         {         
-          localStorage.setItem('token',res.token);
-          localStorage.setItem('userid',res.UserID);
+          console.log(this.userdata(form));
           this.message=res.msg;
-          
+          if (this.message!=="")
+          {
+            this.alert=true;
+          }    
+          else 
+          {
+            this.msg=res.msg_sc;
+            this.alert2=true;
+            form.resetForm();         
+          }      
+         
         },
-        error=>
-        {
-          console.log(error);
-        }
       );              
     }
   
@@ -54,14 +57,20 @@ constructor(private authservices:AuthenticationService){}
    Username:form.value.Username,
    Password:form.value.Password,
    PhoneNumber:form.value.PhoneNumber,
-   Address:form.value.Address,    
+   Address:form.value.Address,   
+   IsActive:form.value.IsActive,
+   IsDeleted:form.value.IsDeleted,
+   CreatedBy:form.value.CreatedBy,
+   CreatedOn:form.value.CreatedOn,
+   UpdatedBy:form.value.UpdatedBy,
+   UpdatedOn:form.value.UpdatedOn 
     }
     return user;
   
 }
-show()
-{
-this.submitted="Form submiited Succesffully";
-}
 
+onclick()
+{
+  this.alert=false;
+}
 }

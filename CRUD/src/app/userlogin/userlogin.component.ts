@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { userLoggedin, Userlogin } from '../shared/User.model';
 @Component({
@@ -9,7 +10,9 @@ import { userLoggedin, Userlogin } from '../shared/User.model';
 })
 export class USERLOGINComponent implements OnInit {
 error!:string;
-  constructor(private auth: AuthenticationService) { }
+message!:string;
+alert=false;
+  constructor(private auth: AuthenticationService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -30,11 +33,17 @@ error!:string;
           localStorage.setItem('userid',user.UserID);
           console.log(user.token);
           console.log(user.UserID);
-        },
-        errorMessage=>{
-          this.error=errorMessage;
-      
-        }  
+          this.message=res.msg;
+          if (this.message!=="")
+          {
+          this.alert=true;
+        }    
+        else 
+        {
+          form.resetForm();
+          this.route.navigate(['details']);
+        }      
+        }, 
         
         );
     }
@@ -49,7 +58,11 @@ error!:string;
    Password:form.value.Password
 
     }
-    return user;
-  
+    return user;  
 }
+onclick()
+{
+  this.alert=false;
+}
+
 }

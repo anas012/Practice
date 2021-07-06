@@ -9,13 +9,19 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { USERLOGINComponent } from './userlogin/userlogin.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { UpdateEmpComponent } from './update-emp/update-emp.component';
+import { AddEmployeeeComponent } from './add-employeee/add-employeee.component';
 @NgModule({
   declarations: [
     AppComponent,
     
     SiginupComponent,
     HomeComponent,
-    USERLOGINComponent
+    USERLOGINComponent,
+    EmployeeDetailsComponent,
+     UpdateEmpComponent,
+    AddEmployeeeComponent
   ],
   imports: [
     BrowserModule,

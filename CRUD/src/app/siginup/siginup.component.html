@@ -1,6 +1,13 @@
 <div class="container">
 <div class="row">
-  
+  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert">
+    <strong>Error!</strong> {{message}}
+    <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  <div class="alert alert-success alert-dismissible fade show text-center" role="alert" *ngIf="alert2">
+    <strong>Success!</strong> {{msg}}
+    <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 <div class="text-center">
     <h3>User Registration Form</h3>
     <hr>
@@ -100,15 +107,79 @@
     </div> 
     <span class="help-block" *ngIf="!PhoneNumber.valid && PhoneNumber.touched" >Please enter a phoneno</span>   
      <br>
+     <div class="form-group">
+      <label for="CreatedBy">Created By</label>
+      <input
+        type="text"
+        class="form-control m-1"
+        id="CreatedBy"
+        placeholder="Created by"
+        ngModel name="CreatedBy"
+        #CreatedBy="ngModel"
+        name="CreatedBy"
+        required
+      />
+    </div>
+    <span class="help-block" *ngIf="!CreatedBy.valid && CreatedBy.touched" >Please enter a name</span>
+    <br>
+    <div class="form-group">
+      <label for="CreatedOn">Created On</label>
+      <input
+        type="datetime-local"
+        class="form-control m-1"
+        id="CreatedOn"
+        placeholder="CreatedOn"
+        ngModel name="CreatedOn"
+        #CreatedOn="ngModel"
+        name="CreatedOn"
+        required
+      />
+    </div>
+    <span class="help-block" *ngIf="!CreatedOn.valid && CreatedOn.touched" >Please Select date and time</span>
+    
+<br>
+<div class="form-group">
+  <label for="UpdatedBy">UpdatedBy</label>
+  <input
+    type="text"
+    class="form-control m-1"
+    id="UpdatedBy"
+    placeholder="Updated by"
+    ngModel name="UpdatedBy"
+    #UpdatedBy="ngModel"
+    name="UpdatedBy"
+  />
+</div>
+<br>   
+
+<div class="form-group">
+  <label for="UpdatedOn">Updated On</label>
+  <input
+    type="datetime-local"
+    class="form-control m-1"
+    id="UpdatedOn"
+    placeholder="UpdatedOn"
+    ngModel name="UpdatedOn"
+    #UpdatedOn="ngModel"
+    name="UpdatedOn"
+  />
+</div>
+<br>
+<div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input m-2" name="IsActive" [(ngModel)]="IsActive" id="IsActive" checked>
+      <label class="custom-control-label" for="IsActive">Is Active</label>
+    </div>
+    <br>
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input m-2" [(ngModel)]="IsDelete" name="IsDeleted" id="IsDeleted">
+      <label class="custom-control-label" for="IsDeleted">Is Deleted</label>
+    </div>
+  
+      <br>
     <div>
-      <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+      <button type="submit" [disabled]="!f.valid" class="btn btn-primary m-1">Submit</button>
     </div>
     </form>
-    <script>
-      setTimeout(function () {
-          $('#h1').fadeOut('fast');
-      }, 2000);
-    </script>
   </div>
   </div>
 </div>
