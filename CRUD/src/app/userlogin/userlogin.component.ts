@@ -25,14 +25,12 @@ alert=false;
     }
     else 
     {
-      this.auth.userlogin(this.userdata(form)).subscribe(
-        (res:userLoggedin)=>
-        {
+      this.auth.userlogin(this.userdata(form)).subscribe((res:userLoggedin)=>
+         {
           const user=res;
-          localStorage.setItem('token',user.token);
-          localStorage.setItem('userid',user.UserID);
           console.log(user.token);
           console.log(user.UserID);
+          this.auth.settoken(res.token,res.UserID);
           this.message=res.msg;
           if (this.message!=="")
           {
@@ -43,12 +41,13 @@ alert=false;
           form.resetForm();
           this.route.navigate(['details']);
         }      
-        }, 
+         }, 
         
         );
-    }
+     }
 
   }
+  
 
   userdata(form:NgForm)
   {

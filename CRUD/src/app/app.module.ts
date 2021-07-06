@@ -7,11 +7,12 @@ import { SiginupComponent } from './siginup/siginup.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from './material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { USERLOGINComponent } from './userlogin/userlogin.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { UpdateEmpComponent } from './update-emp/update-emp.component';
 import { AddEmployeeeComponent } from './add-employeee/add-employeee.component';
+import { InterceptorserviceService } from './interceptorservice.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,7 @@ import { AddEmployeeeComponent } from './add-employeee/add-employeee.component';
     HomeComponent,
     USERLOGINComponent,
     EmployeeDetailsComponent,
-     UpdateEmpComponent,
+    UpdateEmpComponent,
     AddEmployeeeComponent
   ],
   imports: [
@@ -30,8 +31,12 @@ import { AddEmployeeeComponent } from './add-employeee/add-employeee.component';
     MaterialModule,
     HttpClientModule,
     RouterModule
+   
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass:InterceptorserviceService, multi: true }  
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

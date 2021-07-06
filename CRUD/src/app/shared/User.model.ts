@@ -50,4 +50,8 @@ export interface EmployeAdd
   UpdatedBy:string;
   UpdatedOn:Date;
 };
+export interface OnEmployeAdd
+{
+msg:string;
 
+}

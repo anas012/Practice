@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { EmployeAdd } from '../shared/User.model';
+import { AuthenticationService } from '../authentication.service';
+import { EmployeAdd, OnEmployeAdd } from '../shared/User.model';
 
 @Component({
   selector: 'app-add-employeee',
@@ -10,7 +11,7 @@ import { EmployeAdd } from '../shared/User.model';
 export class AddEmployeeeComponent implements OnInit {
 isactive=true;
 isdelete=false;
-  constructor() { }
+  constructor(private auth:AuthenticationService) { }
 
   genders=['male','female'];
 
@@ -18,7 +19,19 @@ isdelete=false;
   }
   OnAddEmploye(form:NgForm)
   {
+    if (!form.valid)
+    {
+      return ;
+    }
+    else {
     console.log(this.empdata(form));
+    this.auth.AddEmp(this.empdata(form)).subscribe((res:OnEmployeAdd)=>
+      {
+        console.log(res.msg);
+        console.log(this.auth.gettoken());
+      }
+      )
+    }
   }
 
   empdata(form:NgForm)

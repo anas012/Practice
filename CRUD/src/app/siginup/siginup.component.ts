@@ -27,6 +27,7 @@ constructor(private authservices:AuthenticationService){}
     return;
     }
     else {
+      var a=this.userdata(form).IsActive;
       this.authservices.SiginupUser(this.userdata(form)).subscribe(
         res=>
         {         
@@ -40,7 +41,9 @@ constructor(private authservices:AuthenticationService){}
           {
             this.msg=res.msg_sc;
             this.alert2=true;
-            form.resetForm();         
+            form.resetForm();      
+           // console.log(this.authservices.settoken(res.token,res.UserID));
+            //console.log(this.authservices.gettoken());   
           }      
          
         },
