@@ -52,6 +52,6 @@ export interface EmployeAdd
 };
 export interface OnEmployeAdd
 {
+msg_sc:string;
 msg:string;
-
 }

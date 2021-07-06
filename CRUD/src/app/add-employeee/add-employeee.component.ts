@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { EmployeAdd, OnEmployeAdd } from '../shared/User.model';
 
@@ -11,7 +12,9 @@ import { EmployeAdd, OnEmployeAdd } from '../shared/User.model';
 export class AddEmployeeeComponent implements OnInit {
 isactive=true;
 isdelete=false;
-  constructor(private auth:AuthenticationService) { }
+alert=false;
+msg!:string;
+  constructor(private auth:AuthenticationService,private route:Router) { }
 
   genders=['male','female'];
 
@@ -27,8 +30,16 @@ isdelete=false;
     console.log(this.empdata(form));
     this.auth.AddEmp(this.empdata(form)).subscribe((res:OnEmployeAdd)=>
       {
-        console.log(res.msg);
-        console.log(this.auth.gettoken());
+        
+        if (res.msg_sc!=="")
+        {        
+        this.route.navigate(['details']);
+        }
+        else 
+        {
+          this.msg =res.msg;
+          this.alert=true;
+        }
       }
       )
     }
@@ -54,6 +65,9 @@ isdelete=false;
     return emp;
   
 }
-
+onclick()
+{
+  this.alert=false;
+}
 
 }
