@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddEmployeeeComponent } from './add-employeee/add-employeee.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { SiginupComponent } from './siginup/siginup.component';
+import { UpdateEmpComponent } from './update-emp/update-emp.component';
 import { USERLOGINComponent } from './userlogin/userlogin.component';
 
 const routes: Routes = [
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path:'siginup' ,component:SiginupComponent },
   { path:'login' ,component:USERLOGINComponent },
   {path:'details',component:EmployeeDetailsComponent},
-  {path:'Addemp',component:AddEmployeeeComponent}
+  {path:'Addemp',component:AddEmployeeeComponent},
+  {path:'Editemploye/:id',component:UpdateEmpComponent}
 ];
 
 @NgModule({

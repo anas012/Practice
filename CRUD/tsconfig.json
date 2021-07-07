@@ -28,7 +28,8 @@
     "strictTemplates": true,
     "strictPropertyInitialization": false,
     "experimentalDecorators": true,
-    "allowJs": true
+    "allowJs": true,
+    
     
   }
 }

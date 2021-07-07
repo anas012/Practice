@@ -66,8 +66,8 @@
             <td>{{ emp.CreatedOn }}</td>
             <td>{{ emp.UpdatedBy }}</td>
             <td>{{ emp.UpdatedOn }}</td>
-            <td><button type="submit" class="btn btn-info">Update</button></td>
-            <td><button type="submit" class="btn btn-danger">Delete</button></td>
+            <td><button type="submit" class="btn btn-info" (click)="onupdate(emp.EmpID)">Update</button></td>
+            <td><button type="submit" class="btn btn-danger" (click)="ondelete(emp.EmpID)">Delete</button></td>
           </tr>
         </tbody>
       </table>
