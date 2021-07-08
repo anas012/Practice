@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { EmployeAdd, OnEmployeAdd } from '../shared/User.model';
 
@@ -14,7 +14,7 @@ isactive=true;
 isdelete=false;
 alert=false;
 msg!:string;
-  constructor(private auth:AuthenticationService,private route:Router) { }
+  constructor(private auth:AuthenticationService,private route:Router,private routee:ActivatedRoute) { }
 
   genders=['male','female'];
 

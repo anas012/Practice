@@ -1,11 +1,21 @@
 <div class="container">
-    <div class="row">
+  <div class="row">
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert">
+      <strong>Error!</strong> {{message}}
+      <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert2">
+      <strong>Error!</strong> {{msg}}
+      <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div> 
+  <div class="row">
     <div class="text-center">
         <h3>Update Employee </h3>
         <hr>
     </div>
       <div class="col-xs-12 col-md-4 col-md-offset-3 ">
-        <form (ngSubmit)="OnupdateEmploye(form)" #form="ngForm">
+        <form (ngSubmit)="OnupdateEmploye()" #form="ngForm">
           
            <div class="form-group">
             <label for="Name">Name</label>
@@ -34,8 +44,7 @@
               #Email="ngModel"
               required
             />
-          </div>
-       
+          </div>    
           <span class="help-block" *ngIf="!Email.valid && Email.touched" >Please enter a valid email</span>
           <br>
         <div class="form-group">
@@ -76,26 +85,25 @@
           <br>
           <div class="form-group">
             <label for="DateOfBirth">Date of birth</label>
-            <input
-              type="date"
-              class="form-control m-1"
-              id="DateOfBirth"
-              placeholder="MM/DD/YYYY"
-              [(ngModel)]="employee.DateOfBirth"
-              #DateOfBirth="ngModel"
-              name="DateOfBirth"
-             
-              required
-            />
+            
+            <input type="date" ngModel [value]="employee.DateOfBirth" [(ngModel)]="employee.DateOfBirth" ngModel name="DateOfBirth" #DateOfBirth="ngModel" required/>    
+           
           </div>
           <span class="help-block" *ngIf="!DateOfBirth.valid && DateOfBirth.touched" >Please enter date of birth</span>
           <br>
             <label for="Gender">Gender</label>
-         <div class="radio" *ngFor="let gen of genders">
-            <label>
-            <input type="radio" class="m-2" [(ngModel)]="employee.Gender" name="Gender" #Gender="ngModel" required />{{gen}}</label>     
-        <span class="help-block" *ngIf="!Gender.valid && Gender.touched">Please select gender</span>
-      </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio"  ngModel name="Gender" ngModel [value]="employee.Gender" [(ngModel)]="employee.Gender"  id="Gender" >
+              <label class="form-check-label" for="Gender">
+                Male
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" [(ngModel)]="employee.Gender" ngModel [value]="employee.Gender" type="radio" ngModel name="Gender" id="Gender" >
+              <label class="form-check-label" for="Gender">
+                Female
+              </label>
+            </div>
       <br>
       <div class="form-group">
         <label for="CreatedBy">Created By</label>

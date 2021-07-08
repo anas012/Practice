@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { EmployeAdd, Iusermodel, OnEmployeAdd, userLoggedin, Userlogin, userRegister } from './shared/User.model';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http'
 import { Observable, pipe } from 'rxjs';
-import { Allemploylist, empdata, empdelete } from './shared/employee.model';
+import { Allemploylist, empdata, empdelete, empupdate } from './shared/employee.model';
 import { _countGroupLabelsBeforeOption } from '@angular/material/core';
 interface log {
   token:string;
@@ -19,7 +19,7 @@ export class AuthenticationService {
   constructor( private htppdata:HttpClient) { }
 SiginupUser(user:Iusermodel)
 {
-return this.htppdata.post<userRegister>("http://192.168.18.118:3000/login/signup",user);
+return this.htppdata.post<userRegister>("http://192.168.18.1183000/login/signup",user);
 }
 
 userlogin (user:Userlogin)
@@ -50,7 +50,10 @@ return this.htppdata.patch<empdelete>(`http://192.168.18.118:3000/rest/delete?id
 
 }
 
-
+onUpdate(id:number,emp:empdata)
+{
+  return this.htppdata.put<empupdate>(`http://192.168.18.118:3000/rest/update?id=${id}`,emp);
+}
 
 settoken(token:string,userid:string)
 {
@@ -60,6 +63,10 @@ localStorage.setItem('userid',userid);
 gettoken()
 {
   return localStorage.getItem('token');
+}
+authcheck()
+{
+  return !!localStorage.getItem('token');
 }
 }
 

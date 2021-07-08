@@ -11,6 +11,8 @@ import { Allemploylist, empdelete } from '../shared/employee.model';
 export class EmployeeDetailsComponent implements OnInit {
 alert=false;
 alert2=false;
+message!:string;
+msg!:string;
   constructor( private route:Router,private auth:AuthenticationService) { }
   //public Allemployee!:Allemploylist[];
   Allemployee!:Allemploylist[];
@@ -38,16 +40,27 @@ refreslist()
         if (res.msg)
         {
           this.alert=true;
+          this.message=res.msg;
           console.log(res.msg);
         }
         else 
         {
           this.alert2=true;
+          this.msg=res.msg_sc;
           this.refreslist();
         }
 
     }
     )
+  }
+  onclick(){
+    this.alert=false;
+    this.alert2=false;
+  }
+  Logout()
+  {
+    this.auth.settoken("","");
+    this.route.navigate(['login']);
   }
 }
 

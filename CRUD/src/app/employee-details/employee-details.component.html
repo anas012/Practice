@@ -1,5 +1,18 @@
+<div class="container">
+    <div class="row">
+      <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert">
+        <strong>Error!</strong> {{message}}
+        <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <div class="alert alert-success alert-dismissible fade show text-center" role="alert" *ngIf="alert2">
+        <strong>Success!</strong> {{msg}}
+        <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>  
+  </div>
+</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
+   
     <div class="navbar-header">
       <a class="navbar-brand">Details Of Employees</a>
     </div>
@@ -9,20 +22,25 @@
           <button (click)="onadd()" class="btn btn-primary m-6" type="button">
             Add New User
           </button>
+          <button
+          class="btn btn-outline-success m-6 m-1"
+          (click)="GetAllemp()"
+          type="button"
+        >
+          Get All Employess
+        </button>
         </li>
       </ul>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav ms-auto mb-2 mb-lg-0">
-          <button class="btn btn-outline-success m-6 m-1" type="button">
-            Get Employess
-          </button>
+         
           <button
-            class="btn btn-outline-success m-6 m-1"
-            (click)="GetAllemp()"
-            type="button"
-          >
-            Get All Employess
-          </button>
+          class="btn btn-outline-danger m-6 m-1"
+          (click)="Logout()"
+          type="button"
+        >
+          Logout
+        </button>
         </ul>
       </div>
     </div>

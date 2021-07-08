@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 import { userLoggedin, Userlogin } from '../shared/User.model';
 @Component({
@@ -12,7 +12,7 @@ export class USERLOGINComponent implements OnInit {
 error!:string;
 message!:string;
 alert=false;
-  constructor(private auth: AuthenticationService,private route:Router) { }
+  constructor(private auth: AuthenticationService,private route:Router,private routee:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
@@ -58,6 +58,10 @@ alert=false;
 
     }
     return user;  
+}
+onclickk()
+{
+  this.route.navigate(['siginup']);
 }
 onclick()
 {

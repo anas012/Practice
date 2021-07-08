@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert">
@@ -46,7 +45,8 @@
               <span class="help-block" *ngIf="!Password.valid && Password.touched" >Please enter a valid password</span>
               <br>
               <div>
-                <button type="submit" [disabled]="!f.valid" class="btn btn-primary m-1">Submit</button>
+                <button type="submit" [disabled]="!f.valid" class="btn btn-primary m-1">Login</button> | 
+                <button type="submit" (click)="onclickk()" class="btn btn-primary m-1">Signup</button> 
               </div>   
           </form>
         </div>

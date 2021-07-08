@@ -29,7 +29,7 @@ export class empdata {
     CreatedBy!: string;
     CreatedOn!: string;
     UpdatedBy!: string;
-    UpdatedOn!: string;
+    UpdatedOn!: Date;
     msg_sc?:string;
     EmpID?:number;
 set (res:empdata)
@@ -54,3 +54,11 @@ msg:string;
 msg_sc:string;
 
 }
+export interface empupdate
+{
+msg:string;
+msg_sc:string;
+
+}
+ 
+

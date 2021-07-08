@@ -99,7 +99,7 @@
             <label for="Gender">Gender</label>
          <div class="radio" *ngFor="let gen of genders">
             <label>
-            <input type="radio" class="m-2" name="Gender" ngModel [value]="gen" name="Gender" #Gender="ngModel" required /> {{gen}}</label>     
+            <input type="radio" class="m-2" ngModel [value]="gen" name="Gender" #Gender="ngModel" required /> {{gen}}</label>     
         <span class="help-block" *ngIf="!Gender.valid && Gender.touched">Please select gender</span>
       </div>
       <br>

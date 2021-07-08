@@ -13,6 +13,10 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { UpdateEmpComponent } from './update-emp/update-emp.component';
 import { AddEmployeeeComponent } from './add-employeee/add-employeee.component';
 import { InterceptorserviceService } from './interceptorservice.service';
+import { DatePipe } from '@angular/common';
+import { AuthGuard } from './auth.guard';
+import { ErrorpageComponent } from './errorpage/errorpage.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +26,8 @@ import { InterceptorserviceService } from './interceptorservice.service';
     USERLOGINComponent,
     EmployeeDetailsComponent,
     UpdateEmpComponent,
-    AddEmployeeeComponent
+    AddEmployeeeComponent,
+    ErrorpageComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +39,9 @@ import { InterceptorserviceService } from './interceptorservice.service';
    
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass:InterceptorserviceService, multi: true }  
+    { provide: HTTP_INTERCEPTORS, useClass:InterceptorserviceService, multi: true }  ,
+    DatePipe,AuthGuard
+    
   ],
 
   bootstrap: [AppComponent]
