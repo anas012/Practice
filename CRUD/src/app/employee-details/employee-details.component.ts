@@ -30,6 +30,7 @@ export class EmployeeDetailsComponent implements OnInit {
   SeC = 0;
   Sse = 0;
   inc = 0;
+  inactive=0;
   constructor(private route: Router, private auth: AuthenticationService) {}
   Allemployee!: Allemploylist[];
   Alluserdata!: dashboarduser;
@@ -68,6 +69,7 @@ export class EmployeeDetailsComponent implements OnInit {
             this.Active++;
           }
         }
+        this.inactive=this.count-this.Active;
       }
     });
   }
