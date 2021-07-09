@@ -14,6 +14,7 @@ export interface Allemploylist {
   CreatedOn: Date;
   UpdatedBy: string;
   UpdatedOn: Date;
+  msg?:string;
 }
 
 export class empdata {
@@ -60,5 +61,9 @@ msg:string;
 msg_sc:string;
 
 }
- 
+ export interface empcheck
+ {
+  msg:string;
+  msg_sc:string;
+ }
 

@@ -1,95 +1,160 @@
-<div class="container">
-    <div class="row">
-      <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert">
-        <strong>Error!</strong> {{message}}
-        <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      <div class="alert alert-success alert-dismissible fade show text-center" role="alert" *ngIf="alert2">
-        <strong>Success!</strong> {{msg}}
-        <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>  
-  </div>
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-   
     <div class="navbar-header">
       <a class="navbar-brand">Details Of Employees</a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="nav-item" routerLinkActive="active-link">
-          <button (click)="onadd()" class="btn btn-primary m-6" type="button">
-            Add New User
+          <button (click)="onadd()" class="btn btn-primary btn-sm m-6" type="button">
+            Add New Employee
           </button>
+
           <button
-          class="btn btn-outline-success m-6 m-1"
-          (click)="GetAllemp()"
-          type="button"
-        >
-          Get All Employess
-        </button>
+            (click)="refreshlist()"
+            class="btn btn-success btn-sm m-1"
+            type="button"
+          >
+            Refresh
+          </button>
         </li>
       </ul>
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav ms-auto mb-2 mb-lg-0">
-         
           <button
-          class="btn btn-outline-danger m-6 m-1"
-          (click)="Logout()"
-          type="button"
-        >
-          Logout
-        </button>
+            class="btn btn-outline-danger m-6 m-1"
+            (click)="Logout()"
+            type="button"
+          >
+            Logout
+          </button>
         </ul>
       </div>
     </div>
-    
   </div>
 </nav>
-<div>
-    <hr>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">EmpID</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Age</th>
-            <th scope="col">Designation</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Date Of Birth</th>
-            <th scope="col">IsActive</th>
-            <th scope="col">IsDeleted</th>
-            <th scope="col">Created By</th>
-            <th scope="col">Created On</th>
-            <th scope="col">Updated By</th>
-            <th scope="col">Updated By</th>
-            <th scope="col">Action</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let emp of Allemployee">
-            <td>{{ emp.EmpID }}</td>
-            <td>{{ emp.Name }}</td>
-            <td>{{ emp.Email }}</td>
-            <td>{{ emp.Age }}</td>
-            <td>{{ emp.Designation }}</td>
-            <td>{{ emp.Gender }}</td>
-            <td>{{ emp.DateOfBirth }}</td>
-            <td>{{ emp.IsActive }}</td>
-            <td>{{ emp.IsDeleted }}</td>
-            <td>{{ emp.CreatedBy }}</td>
-            <td>{{ emp.CreatedOn }}</td>
-            <td>{{ emp.UpdatedBy }}</td>
-            <td>{{ emp.UpdatedOn }}</td>
-            <td><button type="submit" class="btn btn-info" (click)="onupdate(emp.EmpID)">Update</button></td>
-            <td><button type="submit" class="btn btn-danger" (click)="ondelete(emp.EmpID)">Delete</button></td>
-          </tr>
-        </tbody>
-      </table>
-    
+<div
+class="alert alert-success alert-dismissible fade show text-center"
+role="alert"
+*ngIf="alert2"
+>
+<strong>Success!</strong> {{ msg }}
+<button
+  (click)="onclick()"
+  type="button"
+  class="btn-close"
+  data-bs-dismiss="alert"
+  aria-label="Close"
+></button>
 </div>
-   
+<div class="row">
+  <div
+    class="alert alert-danger alert-dismissible fade show text-center"
+    role="alert"
+    *ngIf="alert"
+  >
+    <strong>Error!</strong> {{ message }}
+    <button
+      (click)="onclick()"
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+    </div>
 
+<div>
+  <div>
+  <br/>
+  <div class="row col-xs-2 m-1" >
+    <div class="card p-3 text-white bg-success mb-3 m-2" style="width: 18rem;">
+      <div class="card-body ">
+        <h5 class="card-title">Name: {{fullname}}</h5>
+        <h6 class="card-subtitle mb-2">ID: {{userid}}</h6>
+        <p class="card-text">Email: {{username}}</p>
+      </div>
+    </div>
+
+    <div class="card p-3 text-white bg-danger mb-3 m-2" style="width: 18rem;">
+      <div class="card-body ">
+        <h5 class="card-title">Total Employess</h5>
+        <h6 class="card-subtitle mb-2">{{count}}</h6>
+      </div>
+    </div>
+
+    <div class="card p-3 text-white bg-warning mb-3 m-2" style="width: 18rem;">
+      <div class="card-body ">
+        <h5 class="card-title">Total Active Employess</h5>
+        <h6 class="card-subtitle mb-2">{{Active}}</h6>
+      </div>
+    </div>
+
+    <div class="card p-3 text-white bg-dark mb-3 m-2" style="width: 18rem;">
+      <div class="card-body ">
+        <h5 class="card-title">Designation</h5>
+        <h6 class="card-subtitle mb-2">Total ASE: {{Ase}}</h6>
+        <h6 class="card-subtitle mb-2">Total INTERN: {{internc}}</h6>
+        <h6 class="card-subtitle mb-2">Total SE: {{SeC}}</h6>
+        <h6 class="card-subtitle mb-2">Total SSE: {{Sse}}</h6>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">EmpID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Age</th>
+        <th scope="col">Designation</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Date Of Birth</th>
+        <th scope="col">IsActive</th>
+        <th scope="col">IsDeleted</th>
+        <th scope="col">Created By</th>
+        <th scope="col">Created On</th>
+        <th scope="col">Updated By</th>
+        <th scope="col">Updated On</th>
+        <th scope="col">Action</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of Allemployee">
+        <td>{{ emp.EmpID }}</td>
+        <td>{{ emp.Name }}</td>
+        <td>{{ emp.Email }}</td>
+        <td>{{ emp.Age }}</td>
+        <td>{{ emp.Designation }}</td>
+        <td>{{ emp.Gender }}</td>
+        <td>{{ emp.DateOfBirth }}</td>
+        <td>{{ emp.IsActive }}</td>
+        <td>{{ emp.IsDeleted }}</td>
+        <td>{{ emp.CreatedBy }}</td>
+        <td>{{ emp.CreatedOn }}</td>
+        <td>{{ emp.UpdatedBy }}</td>
+        <td>{{ emp.UpdatedOn }}</td>
+        <td>
+          <button
+            type="submit"
+            class="btn btn-info btn-sm"
+            (click)="onupdate(emp.EmpID)"
+          >
+            Update
+          </button>
+        </td>
+        <td>
+          <button
+            type="submit"
+            class="btn btn-danger btn-sm"
+            (click)="ondelete(emp.EmpID)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

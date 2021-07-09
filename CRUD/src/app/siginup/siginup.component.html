@@ -1,185 +1,293 @@
-<div class="container">
-<div class="row">
-  <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert">
-    <strong>Error!</strong> {{message}}
-    <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-  <div class="alert alert-success alert-dismissible fade show text-center" role="alert" *ngIf="alert2">
-    <strong>Success!</strong> {{msg}}
-    <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-<div class="text-center">
-    <h3>User Registration Form</h3>
-    <hr>
-</div>
-  <div class="col-xs-12 col-md-4 col-md-offset-3">
-    <form (ngSubmit)="onsubmit(f)" #f="ngForm">
-      
-      <div class="form-group">
-        <label for="FirstName">Firstname</label>
-        <input
-          type="text"
-          class="form-control m-1"
-          id="FirstName"
-          ngModel name="FirstName"
-          placeholder="FirstName"
-          #FirstName="ngModel"
-          name="FirstName"
-          required
-        />
-      </div> 
-      <span class="help-block" *ngIf="!FirstName.valid && FirstName.touched" >Please enter first name</span>
-      <br>
-      <div class="form-group">
-        <label for="LastMame">Lastname</label>
-        <input
-          type="text"
-          class="form-control m-1"
-          id="LastName"
-          ngModel name="LastName"
-          placeholder="LastName"
-          #LastName="ngModel"
-          name="LastName"
-          required
-        />
-      </div> 
-      <span class="help-block" *ngIf="!LastName.valid && LastName.touched" >Please enter last name</span>
-       <br>
-      <div class="form-group">
-        <label for="Username">Username</label>
-        <input
-          type="text"
-          class="form-control m-1"
-          id="Username"
-          ngModel name="Username"
-          placeholder="Username"
-          #Username="ngModel"
-          name="Username"
-          required
-        />
-      </div> 
-  
-      <span class="help-block" *ngIf="!Username.valid && Username.touched" >Please enter a valid username</span>
-      <br>   
-      <div class="form-group">
-        <label for="Password">Password</label>
-         <input
-          type="password"
-          class="form-control m-1"
-          id="Password"
-          placeholder="Password"
-          ngModel name="Password"
-          #Password="ngModel"
-          name="Password"
-          required
-        />        
+<div class="container-fluid">
+  <div class="row">
+    <div class="row">
+      <div
+        class="alert alert-danger alert-dismissible fade show text-center"
+        role="alert"
+        *ngIf="alert"
+      >
+        <strong>Error!</strong> {{ message }}
+        <button
+          (click)="onclick()"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div
+        class="alert alert-success alert-dismissible fade show text-center"
+        role="alert"
+        *ngIf="alert2"
+      >
+        <strong>Success!</strong> {{ msg }}
+        <button
+          (click)="onclick()"
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
     </div>
-     <span class="help-block" *ngIf="!Password.valid && Password.touched" >Please enter your password</span>
-   <br>
-     <div class="form-group">
-      <label for="Address">Address</label>
-      <input
-        type="text"
-        class="form-control m-1"
-        id="Address"
-        ngModel name="Address"
-        placeholder="Address"
-        #Address="ngModel"
-        name="Address"
-        required
-      />
-    </div> 
-    <span class="help-block" *ngIf="!Address.valid && Address.touched" >Please enter your address</span>
-   
-   <br>
-    <div class="form-group">
-      <label for="PhoneNumber">Phone No.</label>
-      <input
-        type="text"
-        class="form-control m-1 number"
-        id="PhoneNumber"
-        ngModel name="PhoneNumber"
-        placeholder="PhoneNumber"
-        #PhoneNumber="ngModel"
-        name="PhoneNumber"
-        required
-      />
-    </div> 
-    <span class="help-block" *ngIf="!PhoneNumber.valid && PhoneNumber.touched" >Please enter a phoneno</span>   
-     <br>
-     <div class="form-group">
-      <label for="CreatedBy">Created By</label>
-      <input
-        type="text"
-        class="form-control m-1"
-        id="CreatedBy"
-        placeholder="Created by"
-        ngModel name="CreatedBy"
-        #CreatedBy="ngModel"
-        name="CreatedBy"
-        required
-      />
-    </div>
-    <span class="help-block" *ngIf="!CreatedBy.valid && CreatedBy.touched" >Please enter a name</span>
-    <br>
-    <div class="form-group">
-      <label for="CreatedOn">Created On</label>
-      <input
-        type="datetime-local"
-        class="form-control m-1"
-        id="CreatedOn"
-        placeholder="CreatedOn"
-        ngModel name="CreatedOn"
-        #CreatedOn="ngModel"
-        name="CreatedOn"
-        required
-      />
-    </div>
-    <span class="help-block" *ngIf="!CreatedOn.valid && CreatedOn.touched" >Please Select date and time</span>
-    
-<br>
-<div class="form-group">
-  <label for="UpdatedBy">UpdatedBy</label>
-  <input
-    type="text"
-    class="form-control m-1"
-    id="UpdatedBy"
-    placeholder="Updated by"
-    ngModel name="UpdatedBy"
-    #UpdatedBy="ngModel"
-    name="UpdatedBy"
-  />
-</div>
-<br>   
 
-<div class="form-group">
-  <label for="UpdatedOn">Updated On</label>
-  <input
-    type="datetime-local"
-    class="form-control m-1"
-    id="UpdatedOn"
-    placeholder="UpdatedOn"
-    ngModel name="UpdatedOn"
-    #UpdatedOn="ngModel"
-    name="UpdatedOn"
-  />
-</div>
-<br>
-<div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input m-2" name="IsActive" [(ngModel)]="IsActive" id="IsActive" checked>
-      <label class="custom-control-label" for="IsActive">Is Active</label>
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container px-5">
+            <a class="navbar-brand">Welcome</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/login']">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/notfound']" >Contact</a>
+                </li>
+                <li class="nav-item dropdown"></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
     </div>
-    <br>
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" class="custom-control-input m-2" [(ngModel)]="IsDelete" name="IsDeleted" id="IsDeleted">
-      <label class="custom-control-label" for="IsDeleted">Is Deleted</label>
+    <div class="text-center">
+      <h3>User Registration Form</h3>
+      <hr />
     </div>
-  
-      <br>
-    <div>
-      <button type="submit" [disabled]="!f.valid" class="btn btn-primary m-1">Submit</button>
+    <div class="col-xs-12 col-md-4 col-md-offset-3">
+      <form (ngSubmit)="onsubmit(f)" #f="ngForm">
+        <div class="form-group">
+          <label for="FirstName">Firstname</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="FirstName"
+            ngModel
+            name="FirstName"
+            placeholder="FirstName"
+            #FirstName="ngModel"
+            name="FirstName"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!FirstName.valid && FirstName.touched"
+          >Please enter first name</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="LastMame">Lastname</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="LastName"
+            ngModel
+            name="LastName"
+            placeholder="LastName"
+            #LastName="ngModel"
+            name="LastName"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!LastName.valid && LastName.touched"
+          >Please enter last name</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="Username">Username</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="Username"
+            ngModel
+            name="Username"
+            placeholder="Username"
+            #Username="ngModel"
+            name="Username"
+            required
+          />
+        </div>
+
+        <span class="help-block" *ngIf="!Username.valid && Username.touched"
+          >Please enter a valid username</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="Password">Password</label>
+          <input
+            type="password"
+            class="form-control m-1"
+            id="Password"
+            placeholder="Password"
+            ngModel
+            name="Password"
+            #Password="ngModel"
+            name="Password"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!Password.valid && Password.touched"
+          >Please enter your password</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="Address">Address</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="Address"
+            ngModel
+            name="Address"
+            placeholder="Address"
+            #Address="ngModel"
+            name="Address"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!Address.valid && Address.touched"
+          >Please enter your address</span
+        >
+
+        <br />
+        <div class="form-group">
+          <label for="PhoneNumber">Phone No.</label>
+          <input
+            type="text"
+            class="form-control m-1 number"
+            id="PhoneNumber"
+            ngModel
+            name="PhoneNumber"
+            placeholder="PhoneNumber"
+            #PhoneNumber="ngModel"
+            name="PhoneNumber"
+            required
+          />
+        </div>
+        <span
+          class="help-block"
+          *ngIf="!PhoneNumber.valid && PhoneNumber.touched"
+          >Please enter a phoneno</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="CreatedBy">Created By</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="CreatedBy"
+            placeholder="Created by"
+            ngModel
+            name="CreatedBy"
+            #CreatedBy="ngModel"
+            name="CreatedBy"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!CreatedBy.valid && CreatedBy.touched"
+          >Please enter a name</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="CreatedOn">Created On</label>
+          <input
+            type="datetime-local"
+            class="form-control m-1"
+            id="CreatedOn"
+            placeholder="CreatedOn"
+            ngModel
+            name="CreatedOn"
+            #CreatedOn="ngModel"
+            name="CreatedOn"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!CreatedOn.valid && CreatedOn.touched"
+          >Please Select date and time</span
+        >
+
+        <br />
+        <div class="form-group">
+          <label for="UpdatedBy">UpdatedBy</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="UpdatedBy"
+            placeholder="Updated by"
+            ngModel
+            name="UpdatedBy"
+            #UpdatedBy="ngModel"
+            name="UpdatedBy"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!UpdatedBy.valid && UpdatedBy.touched"
+          >Please enter the name</span
+        >
+        <br />
+
+        <div class="form-group">
+          <label for="UpdatedOn">Updated On</label>
+          <input
+            type="datetime-local"
+            class="form-control m-1"
+            id="UpdatedOn"
+            placeholder="UpdatedOn"
+            ngModel
+            name="UpdatedOn"
+            #UpdatedOn="ngModel"
+            name="UpdatedOn"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!UpdatedOn.valid && UpdatedOn.touched"
+          >Please Select date and time</span
+        >
+        <br />
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input m-2"
+            name="IsActive"
+            [(ngModel)]="IsActive"
+            id="IsActive"
+            checked
+          />
+          <label class="custom-control-label" for="IsActive">Is Active</label>
+        </div>
+        <br />
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input m-2"
+            [(ngModel)]="IsDelete"
+            name="IsDeleted"
+            id="IsDeleted"
+          />
+          <label class="custom-control-label" for="IsDeleted">Is Deleted</label>
+        </div>
+
+        <br />
+        <div>
+          <button
+            type="submit"
+            [disabled]="!f.valid"
+            class="btn btn-primary m-1"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
-    </form>
-  </div>
   </div>
 </div>

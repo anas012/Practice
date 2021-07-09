@@ -19,6 +19,8 @@ export interface Iusermodel
       UserID:string;
       msg:string;
       msg_sc:string;
+      status:string;
+      error:string;
 };
 
 export interface Userlogin
@@ -55,3 +57,19 @@ export interface OnEmployeAdd
 msg_sc:string;
 msg:string;
 }
+export interface dashboarduser {
+  UserID:string;
+  FirstName: string;
+  LastName: string;
+  Username: string;
+  Address: string;
+  PhoneNumber: string;
+  IsActive: boolean;
+  IsDeleted: boolean;
+  CreatedBy: string;
+  CreatedOn: Date;
+  UpdatedBy: string;
+  UpdatedOn: Date;
+  msg?:string;
+}
+

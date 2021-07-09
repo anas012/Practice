@@ -1,186 +1,305 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert">
-      <strong>Error!</strong> {{message}}
-      <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div
+    class="alert alert-warning alert-dismissible fade show text-center"
+    role="alert"
+    *ngIf="alert"
+  >
+    <strong>Error!</strong> {{ message }}
+    <button
+      (click)="onclick()"
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div>
+    <div class="row">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container px-5">
+      <a class="navbar-brand">Welcome</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/details']">Details</a>
+          </li>
+          <li class="nav-item dropdown"></li>
+        </ul>
+      </div>
     </div>
-    <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" *ngIf="alert2">
-      <strong>Error!</strong> {{msg}}
-      <button (click)="onclick()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </nav>
+  </div>
+  </div>
+<div class="container">
+  <div class="row">   
+    <div
+      class="alert alert-warning alert-dismissible fade show text-center"
+      role="alert"
+      *ngIf="alert2"
+    >
+      <strong>Success!</strong> {{ msg }}
+      <button
+        (click)="onclick()"
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
     </div>
-  </div> 
+  </div>
   <div class="row">
     <div class="text-center">
-        <h3>Update Employee </h3>
-        <hr>
+      <h3>Update Employee</h3>
+      <hr />
     </div>
-      <div class="col-xs-12 col-md-4 col-md-offset-3 ">
-        <form (ngSubmit)="OnupdateEmploye()" #form="ngForm">
-          
-           <div class="form-group">
-            <label for="Name">Name</label>
-            <input
-              type="text"
-              class="form-control m-1"
-              id="Name"    
-              placeholder="Name"
-              #Name="ngModel"
-              [(ngModel)]="employee.Name"
-              name="Name"
-              required
-            />
-          </div> 
-        <span class="help-block" *ngIf="!Name.valid && Name.touched" >Please enter a Name</span>
-           <br>   
-         <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              class="form-control m-1"
-              id="email"
-              placeholder="Email"
-              name="Email"
-              [(ngModel)]="employee.Email"
-              #Email="ngModel"
-              required
-            />
-          </div>    
-          <span class="help-block" *ngIf="!Email.valid && Email.touched" >Please enter a valid email</span>
-          <br>
+    <div class="col-xs-12 col-md-4 col-md-offset-3">
+      <form (ngSubmit)="OnupdateEmploye()" #form="ngForm">
         <div class="form-group">
-            <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
-              >Designation</label>
-            <select
-              class="custom-select my-1 mr-sm-2  col-sm-4 m-2"
-              #Designation="ngModel"
-              name="Designation"
-              [(ngModel)]="employee.Designation"
-              required
-              id="Designation"
-            >
-              <option value="ASE">ASE</option>
-              <option value="SE">SE</option>
-              <option value="SSE">SSE</option>
-              <option value="Intern">Intern</option>
-            </select>
-          </div>
-       
-          <span class="help-block" *ngIf="!Designation.valid && Designation.touched" >Please select the designation</span>
-          <br>
-          <div class="form-group">
-            <label for="Age">Age</label>
-            <input
-              type="number"
-              class="form-control m-1"
-              id="Age"
-              placeholder="Age"
-              [(ngModel)]="employee.Age"
-              #Age="ngModel"
-              name="Age"
-              required
-            />
-          </div>
-         
-          <span class="help-block" *ngIf="!Age.valid && Age.touched" >Please enter Age</span>
-          <br>
-          <div class="form-group">
-            <label for="DateOfBirth">Date of birth</label>
-            
-            <input type="date" ngModel [value]="employee.DateOfBirth" [(ngModel)]="employee.DateOfBirth" ngModel name="DateOfBirth" #DateOfBirth="ngModel" required/>    
-           
-          </div>
-          <span class="help-block" *ngIf="!DateOfBirth.valid && DateOfBirth.touched" >Please enter date of birth</span>
-          <br>
-            <label for="Gender">Gender</label>
-            <div class="form-check">
-              <input class="form-check-input" type="radio"  ngModel name="Gender" ngModel [value]="employee.Gender" [(ngModel)]="employee.Gender"  id="Gender" >
-              <label class="form-check-label" for="Gender">
-                Male
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" [(ngModel)]="employee.Gender" ngModel [value]="employee.Gender" type="radio" ngModel name="Gender" id="Gender" >
-              <label class="form-check-label" for="Gender">
-                Female
-              </label>
-            </div>
-      <br>
-      <div class="form-group">
-        <label for="CreatedBy">Created By</label>
-        <input
-          type="text"
-          class="form-control m-1"
-          id="CreatedBy"
-          placeholder="Created by"
-          [(ngModel)]="employee.CreatedBy"
-          #CreatedBy="ngModel"
-          name="CreatedBy"
-          required
-        />
-      </div>
-      <span class="help-block" *ngIf="!CreatedBy.valid && CreatedBy.touched" >Please enter a name</span>
-      <br>
-      <div class="form-group">
-        <label for="CreatedOn">Created On</label>
-        <input
-          type="datetime-local"
-          class="form-control m-1"
-          id="CreatedOn"
-          placeholder="CreatedOn"
-          [(ngModel)]="employee.CreatedOn"
-          #CreatedOn="ngModel"
-          name="CreatedOn"
-          required
-        />
-      </div>
-      <span class="help-block" *ngIf="!CreatedOn.valid && CreatedOn.touched" >Please Select date and time</span>
-      
-<br>
-<div class="form-group">
-    <label for="UpdatedBy">UpdatedBy</label>
-    <input
-      type="text"
-      class="form-control m-1"
-      id="UpdatedBy"
-      placeholder="Updated by"
-      [(ngModel)]="employee.UpdatedBy"
-      #UpdatedBy="ngModel"
-      name="UpdatedBy"
-      required
-    />
-  </div>
-  <span class="help-block" *ngIf="!UpdatedBy.valid && UpdatedBy.touched" >Please enter a name</span>
-  <br>   
-
-  <div class="form-group">
-    <label for="UpdatedOn">Updated On</label>
-    <input
-      type="datetime-local"
-      class="form-control m-1"
-      id="UpdatedOn"
-      placeholder="UpdatedOn"
-      [(ngModel)]="employee.UpdatedOn"
-      #UpdatedOn="ngModel"
-      name="UpdatedOn"
-      required
-    />
-  </div>
-  <span class="help-block" *ngIf="!UpdatedOn.valid && UpdatedOn.touched" >Please Select date and time</span>
-  <br>
-  <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input m-2" name="IsActive" [(ngModel)]="employee.IsActive"  id="IsActive" checked>
-        <label class="custom-control-label" for="IsActive">Is Active</label>
-      </div>
-      <br>
-      <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input m-2" name="IsDeleted" [(ngModel)]="employee.IsDeleted" name="IsDeleted" id="IsDeleted">
-        <label class="custom-control-label" for="IsDeleted">Is Deleted</label>
-      </div>
-        <br>
-        <div>
-          <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Submit</button>
+          <label for="Name">Name</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="Name"
+            placeholder="Name"
+            #Name="ngModel"
+            [(ngModel)]="employee.Name"
+            name="Name"
+            required
+          />
         </div>
-        </form>
-      </div>
+        <span class="help-block" *ngIf="!Name.valid && Name.touched"
+          >Please enter a Name</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control m-1"
+            id="email"
+            placeholder="Email"
+            name="Email"
+            [(ngModel)]="employee.Email"
+            #Email="ngModel"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!Email.valid && Email.touched"
+          >Please enter a valid email</span
+        >
+        <br />
+        <div class="form-group">
+          <label class="my-1 mr-2" for="inlineFormCustomSelectPref"
+            >Designation</label
+          >
+          <select
+            class="custom-select my-1 mr-sm-2 col-sm-4 m-2"
+            #Designation="ngModel"
+            name="Designation"
+            [(ngModel)]="employee.Designation"
+            required
+            id="Designation"
+          >
+            <option value="ASE">ASE</option>
+            <option value="SE">SE</option>
+            <option value="SSE">SSE</option>
+            <option value="Intern">Intern</option>
+          </select>
+        </div>
+
+        <span
+          class="help-block"
+          *ngIf="!Designation.valid && Designation.touched"
+          >Please select the designation</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="Age">Age</label>
+          <input
+            type="number"
+            class="form-control m-1"
+            id="Age"
+            placeholder="Age"
+            [(ngModel)]="employee.Age"
+            #Age="ngModel"
+            name="Age"
+            required
+          />
+        </div>
+
+        <span class="help-block" *ngIf="!Age.valid && Age.touched"
+          >Please enter Age</span
+        >
+        <span class="help-block" *ngIf="agealert"
+        >Age must not be negative</span
+      >
+    <br/>
+        <div class="form-group">
+          <label for="DateOfBirth">Date of birth</label>
+          <input
+            type="date"
+            class="form-control m-1"
+            id="DateOfBirth"
+            placeholder="MM/DD/YYYY"
+            ngModel
+            name="DateOfBirth"
+            #DateOfBirth="ngModel"
+            [(ngModel)]="employee.DateOfBirth"
+            name="DateOfBirth"
+            required
+          />
+        </div>
+        <span
+          class="help-block"
+          *ngIf="!DateOfBirth.valid && DateOfBirth.touched"
+          >Please enter date of birth</span
+        >
+        <br />
+        <label for="Gender">Gender</label>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            ngModel
+            name="Gender"
+            value="male"
+            [(ngModel)]="employee.Gender"
+            id="Gender"
+          />
+          <label class="form-check-label" for="Gender"> Male </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            [(ngModel)]="employee.Gender"
+            value="female"
+            type="radio"
+            ngModel
+            name="Gender"
+            id="Gender"
+          />
+          <label class="form-check-label" for="Gender"> Female </label>
+        </div>
+        <br />
+        <div class="form-group">
+          <label for="CreatedBy">Created By</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="CreatedBy"
+            placeholder="Created by"
+            [(ngModel)]="employee.CreatedBy"
+            #CreatedBy="ngModel"
+            name="CreatedBy"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!CreatedBy.valid && CreatedBy.touched"
+          >Please enter a name</span
+        >
+        <br />
+        <div class="form-group">
+          <label for="CreatedOn">Created On</label>
+          <input
+            type="datetime-local"
+            class="form-control m-1"
+            id="CreatedOn"
+            placeholder="CreatedOn"
+            [(ngModel)]="employee.CreatedOn"
+            #CreatedOn="ngModel"
+            name="CreatedOn"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!CreatedOn.valid && CreatedOn.touched"
+          >Please Select date and time</span
+        >
+
+        <br />
+        <div class="form-group">
+          <label for="UpdatedBy">UpdatedBy</label>
+          <input
+            type="text"
+            class="form-control m-1"
+            id="UpdatedBy"
+            placeholder="Updated by"
+            [(ngModel)]="employee.UpdatedBy"
+            #UpdatedBy="ngModel"
+            name="UpdatedBy"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!UpdatedBy.valid && UpdatedBy.touched"
+          >Please enter a name</span
+        >
+        <br />
+
+        <div class="form-group">
+          <label for="UpdatedOn">Updated On</label>
+          <input
+            type="datetime-local"
+            class="form-control m-1"
+            id="UpdatedOn"
+            placeholder="UpdatedOn"
+            [(ngModel)]="employee.UpdatedOn"
+            #UpdatedOn="ngModel"
+            name="UpdatedOn"
+            required
+          />
+        </div>
+        <span class="help-block" *ngIf="!UpdatedOn.valid && UpdatedOn.touched"
+          >Please Select date and time</span
+        >
+        <br />
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input m-2"
+            name="IsActive"
+            [(ngModel)]="employee.IsActive"
+            id="IsActive"
+            checked
+          />
+          <label class="custom-control-label" for="IsActive">Is Active</label>
+        </div>
+        <br />
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input m-2"
+            name="IsDeleted"
+            [(ngModel)]="employee.IsDeleted"
+            name="IsDeleted"
+            id="IsDeleted"
+          />
+          <label class="custom-control-label" for="IsDeleted">Is Deleted</label>
+        </div>
+        <br />
+        <div>
+          <button
+            type="submit"
+            [disabled]="!form.valid"
+            class="btn btn-primary m-3"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
-    </div> 
+  </div>
+
+
+</div>
+</div>
